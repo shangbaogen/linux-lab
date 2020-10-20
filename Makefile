@@ -501,7 +501,7 @@ ifeq ($$(findstring $(1),$$(MAKECMDGOALS)),$(1))
       CCORI_$(2) := internal
       CCORI := internal
     else
-      $(eval $(call __vs,CCORI,$(2),$(3)))
+      $$(eval $$(call __vs,CCORI,$(2),$(3)))
     endif
     GCC_$(2)_SWITCH := 1
   endif
@@ -3418,6 +3418,7 @@ endif
 ifeq ($(shell $(GDB) --version >/dev/null 2>&1; echo $$?), 0)
   GDB_ARCH  ?= 1
 endif
+$(warning GDB is $(GDB))
 ifneq ($(GDB_ARCH), 1)
   ifeq ($(GDB_MARCH), 1)
      GDB := gdb-multiarch
